@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/* Class-based dark mode so the toggle can override the OS preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-navy-50: #eef3ff;
+    --color-navy-100: #dde6ff;
+    --color-navy-200: #c2d2ff;
+    --color-navy-300: #9bb4ff;
+    --color-navy-400: #5d8cff;
+    --color-navy-500: #3b73ff;
+    --color-navy-600: #2d6cff;
+    --color-navy-700: #1f4fd8;
+    --color-navy-800: #1b3fa8;
+    --color-navy-900: #1a3783;
+    --color-navy-950: #0b0e1f;
+
+    --color-accent-400: #a06bff;
+    --color-accent-500: #8b45ff;
+    --color-accent-600: #7b2dff;
+    --color-accent-700: #6a1fe0;
+
+    --color-aqua-400: #22d3ee;
+    --color-aqua-500: #06b6d4;
+
+    --animate-fade-in: fade-in 0.25s ease-out both;
+    --animate-slide-up: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    --animate-scale-in: scale-in 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scale-in {
+        from {
+            opacity: 0;
+            transform: scale(0.96);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+@layer base {
+    /* Respect users who ask for less motion. */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
