@@ -19,6 +19,12 @@
             <x-input-error for="password" />
         </div>
 
+        <div class="-mt-2 text-right">
+            <a href="{{ route('password.request') }}" class="text-sm font-medium text-navy-700 hover:text-navy-600 dark:text-navy-300 dark:hover:text-navy-200">
+                {{ __('auth.forgot_password') }}
+            </a>
+        </div>
+
         <label class="flex items-center gap-2.5 text-sm text-slate-600 dark:text-slate-400">
             <input type="checkbox" name="remember" value="1"
                    class="size-4 rounded border-slate-300 text-navy-600 focus:ring-navy-500 dark:border-slate-600 dark:bg-slate-800">

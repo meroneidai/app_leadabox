@@ -15,16 +15,6 @@
         @endcan
     </x-page-header>
 
-    @if (session('temporary_password'))
-        <div class="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-500/30 dark:bg-amber-500/10">
-            <p class="font-semibold text-amber-900 dark:text-amber-200">{{ __('team.temporary_password') }}</p>
-            <p class="mt-1 text-sm text-amber-800 dark:text-amber-300">{{ __('team.temporary_password_hint') }}</p>
-            <code class="mt-3 inline-block rounded-lg bg-white px-3 py-2 font-mono text-sm text-amber-900 ring-1 ring-amber-200 dark:bg-slate-900 dark:text-amber-200 dark:ring-amber-500/30">
-                {{ session('temporary_password') }}
-            </code>
-        </div>
-    @endif
-
     <x-card padding="p-0">
         @if ($members->isEmpty())
             <x-empty-state :title="__('team.empty')" />
@@ -75,6 +65,15 @@
                                         </x-button>
 
                                         @can('manage team')
+                                            @if ($member->last_login_at === null && $member->is_active)
+                                                <form method="POST" action="{{ route('team.send-invite', $member) }}">
+                                                    @csrf
+                                                    <x-button type="submit" variant="ghost" size="sm">
+                                                        {{ __('team.resend_invite') }}
+                                                    </x-button>
+                                                </form>
+                                            @endif
+
                                             @if (auth()->user()->isNot($member))
                                                 <form method="POST" action="{{ route('team.toggle-active', $member) }}">
                                                     @csrf

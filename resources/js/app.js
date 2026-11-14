@@ -92,3 +92,147 @@ window.documentForm = (config) => ({
 window.Alpine = Alpine;
 
 Alpine.start();
+
+const initializeWaterLens = () => {
+    if (!document.body.hasAttribute('data-water-lens') || window.matchMedia('(pointer: coarse), (prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const lens = document.createElement('div');
+    lens.className = 'water-lens';
+    lens.setAttribute('aria-hidden', 'true');
+    document.body.append(lens);
+
+    let frame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    window.addEventListener('pointermove', (event) => {
+        if (event.pointerType !== 'mouse') {
+            return;
+        }
+
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        lens.classList.add('is-visible');
+
+        if (frame) {
+            return;
+        }
+
+        frame = window.requestAnimationFrame(() => {
+            lens.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0) translate(-50%, -50%)`;
+            frame = 0;
+        });
+    }, { passive: true });
+
+    window.addEventListener('blur', () => lens.classList.remove('is-visible'));
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            lens.classList.remove('is-visible');
+        }
+    });
+};
+
+const initializeWaterParticles = () => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('.water-particles').forEach((canvas) => {
+        const context = canvas.getContext('2d');
+
+        if (!context) {
+            return;
+        }
+
+        let width = 0;
+        let height = 0;
+        let pixelRatio = 1;
+        let pointerX = 0;
+        let pointerY = 0;
+        let animationFrame = 0;
+        let particles = [];
+
+        const createParticles = () => Array.from(
+            { length: Math.min(138, Math.max(60, Math.round(width * height / 11500))) },
+            () => ({ x: Math.random(), y: Math.random(), depth: Math.random(), speed: reduceMotion ? 0 : 0.0014 + Math.random() * 0.0024 }),
+        );
+
+        const resize = () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = Math.round(width * pixelRatio);
+            canvas.height = Math.round(height * pixelRatio);
+            context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+            particles = createParticles();
+        };
+
+        const render = () => {
+            context.clearRect(0, 0, width, height);
+
+            const projected = particles.map((particle) => {
+                particle.depth += particle.speed;
+
+                if (particle.depth > 1) {
+                    particle.depth = 0;
+                    particle.x = Math.random();
+                    particle.y = Math.random();
+                }
+
+                const scale = 0.3 + particle.depth * 1.05;
+
+                return {
+                    x: width / 2 + (particle.x - 0.5) * width * scale + pointerX * particle.depth * 16,
+                    y: height / 2 + (particle.y - 0.5) * height * scale + pointerY * particle.depth * 16,
+                    radius: 0.7 + particle.depth * 1.45,
+                    depth: particle.depth,
+                };
+            });
+
+            projected.forEach((point, index) => {
+                for (let nextIndex = index + 1; nextIndex < projected.length; nextIndex += 1) {
+                    const next = projected[nextIndex];
+                    const distance = Math.hypot(point.x - next.x, point.y - next.y);
+
+                    if (distance < 88) {
+                        context.beginPath();
+                        context.moveTo(point.x, point.y);
+                        context.lineTo(next.x, next.y);
+                        context.strokeStyle = `rgba(124, 111, 247, ${(1 - distance / 88) * 0.16 * Math.min(point.depth + 0.25, next.depth + 0.25)})`;
+                        context.lineWidth = 0.7;
+                        context.stroke();
+                    }
+                }
+
+                context.beginPath();
+                context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
+                context.fillStyle = `rgba(125, 111, 245, ${0.13 + point.depth * 0.48})`;
+                context.fill();
+            });
+
+            if (!reduceMotion && !document.hidden) {
+                animationFrame = window.requestAnimationFrame(render);
+            }
+        };
+
+        window.addEventListener('resize', resize, { passive: true });
+        window.addEventListener('pointermove', (event) => {
+            pointerX = (event.clientX / width - 0.5) * 2;
+            pointerY = (event.clientY / height - 0.5) * 2;
+        }, { passive: true });
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && animationFrame) {
+                window.cancelAnimationFrame(animationFrame);
+                animationFrame = 0;
+            } else if (!document.hidden && !reduceMotion && !animationFrame) {
+                animationFrame = window.requestAnimationFrame(render);
+            }
+        });
+
+        resize();
+        render();
+    });
+};
+
+initializeWaterLens();
+initializeWaterParticles();

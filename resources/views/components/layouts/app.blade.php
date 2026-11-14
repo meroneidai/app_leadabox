@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>{{ $title ? $title.' · '.$brand : $brand }}</title>
 
     {{-- Applied before paint so the theme never flashes. --}}
@@ -25,9 +28,13 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="h-full bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+<body data-water-lens class="relative isolate h-full bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(115,105,255,.06),transparent_38%)] dark:bg-[radial-gradient(ellipse_at_top_left,rgba(115,105,255,.09),transparent_38%)]"></div>
+        <div class="absolute -right-36 top-24 size-[26rem] rounded-full bg-sky-200/15 blur-[110px] dark:bg-indigo-700/10"></div>
+    </div>
     <div
-        class="min-h-full lg:flex"
+        class="relative z-10 min-h-full lg:flex"
         x-data="{
             collapsed: localStorage.getItem('sidebar') === 'collapsed',
             mobileOpen: false,

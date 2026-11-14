@@ -41,6 +41,24 @@
                     </x-select>
                     <x-input-error for="role" />
                 </div>
+
+                <label class="sm:col-span-2 flex items-start gap-3 rounded-xl border border-slate-200 p-4 dark:border-slate-800">
+                    <input type="checkbox" name="is_active" value="1" @checked(old('is_active', true))
+                           class="mt-0.5 size-4 rounded border-slate-300 text-navy-600 focus:ring-navy-500 dark:border-slate-600 dark:bg-slate-800">
+                    <span>
+                        <span class="block text-sm font-medium">{{ __('team.active_account') }}</span>
+                        <span class="mt-1 block text-xs text-slate-500 dark:text-slate-400">{{ __('team.active_account_hint') }}</span>
+                    </span>
+                </label>
+
+                <label class="sm:col-span-2 flex items-start gap-3 rounded-xl border border-slate-200 p-4 dark:border-slate-800">
+                    <input type="checkbox" name="send_invite" value="1" @checked(old('send_invite', true))
+                           class="mt-0.5 size-4 rounded border-slate-300 text-navy-600 focus:ring-navy-500 dark:border-slate-600 dark:bg-slate-800">
+                    <span>
+                        <span class="block text-sm font-medium">{{ __('team.send_invite') }}</span>
+                        <span class="mt-1 block text-xs text-slate-500 dark:text-slate-400">{{ __('team.send_invite_hint') }}</span>
+                    </span>
+                </label>
             </div>
         </x-card>
 

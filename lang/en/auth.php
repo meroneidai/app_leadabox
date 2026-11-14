@@ -17,4 +17,12 @@ return [
     'log_in' => 'Sign in',
     'create_account' => 'Create account',
     'full_name' => 'Full name',
+    'forgot_password' => 'Forgot your password?',
+    'forgot_password_title' => 'Reset your password',
+    'forgot_password_subtitle' => 'Enter your account email and we will send a secure reset link if it exists.',
+    'send_reset_link' => 'Send reset link',
+    'reset_password_title' => 'Choose a new password',
+    'reset_password' => 'Save new password',
+    'password_link_sent' => 'If an account matches that email, a password setup link has been sent.',
+    'password_reset' => 'Your password has been updated. You can sign in now.',
 ];

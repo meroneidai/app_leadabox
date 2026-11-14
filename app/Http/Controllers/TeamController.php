@@ -9,9 +9,11 @@ use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Throwable;
 
 class TeamController extends Controller
 {
@@ -34,25 +36,50 @@ class TeamController extends Controller
     public function store(StoreTeamMemberRequest $request): RedirectResponse
     {
         $validated = $request->validated();
-        $password = Str::password(16);
-
         $user = User::create([
             'company_id' => $request->user()->company_id ?? Company::current()?->id,
             'name' => $validated['name'],
             'email' => $validated['email'],
             'job_title' => $validated['job_title'] ?? null,
             'phone' => $validated['phone'] ?? null,
-            'password' => $password,
-            'is_active' => true,
+            'password' => Str::password(48),
+            'is_active' => $validated['is_active'] ?? false,
         ]);
 
         $user->syncRoles([$validated['role']]);
 
+        $status = __('team.invite_not_sent');
+
+        if ($validated['send_invite'] ?? false) {
+            try {
+                $inviteStatus = Password::sendResetLink(['email' => $user->email]);
+                $status = __($inviteStatus === Password::RESET_LINK_SENT
+                    ? 'team.invite_email_sent'
+                    : 'team.invite_email_failed');
+            } catch (Throwable) {
+                $status = __('team.invite_email_failed');
+            }
+        }
+
         return redirect()
             ->route('team.index')
-            ->with('status', __('team.member_created', ['name' => $user->name]))
-            // Shown once so the admin can hand the credentials over.
-            ->with('temporary_password', $password);
+            ->with('status', __('team.member_created', ['name' => $user->name]).' '.$status);
+    }
+
+    public function sendInvite(User $user): RedirectResponse
+    {
+        $this->authorize('update', $user);
+
+        try {
+            $inviteStatus = Password::sendResetLink(['email' => $user->email]);
+            $status = __($inviteStatus === Password::RESET_LINK_SENT
+                ? 'team.invite_email_sent'
+                : 'team.invite_email_failed');
+        } catch (Throwable) {
+            $status = __('team.invite_email_failed');
+        }
+
+        return back()->with('status', $status);
     }
 
     public function edit(User $user): View

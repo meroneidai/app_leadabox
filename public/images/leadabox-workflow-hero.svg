@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Leadabox customer and team workspace</title>
+  <desc id="desc">A floating workspace dashboard connects customer leads, quotes, projects and invoices.</desc>
+  <defs>
+    <linearGradient id="glow" x1="167" y1="85" x2="741" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#B7A7FF" stop-opacity=".54"/><stop offset=".54" stop-color="#91A7FF" stop-opacity=".2"/><stop offset="1" stop-color="#75D7E9" stop-opacity=".38"/></linearGradient>
+    <linearGradient id="panel" x1="176" y1="147" x2="741" y2="592" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity=".96"/><stop offset="1" stop-color="#F5F5FF" stop-opacity=".93"/></linearGradient>
+    <linearGradient id="purple" x1="292" y1="306" x2="484" y2="514" gradientUnits="userSpaceOnUse"><stop stop-color="#8B7BFF"/><stop offset="1" stop-color="#5C53E8"/></linearGradient>
+    <linearGradient id="aqua" x1="522" y1="357" x2="683" y2="456" gradientUnits="userSpaceOnUse"><stop stop-color="#B4F0ED"/><stop offset="1" stop-color="#B9CEFF"/></linearGradient>
+    <filter id="shadow" x="78" y="70" width="760" height="635" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feGaussianBlur in="BackgroundImageFix" stdDeviation="14"/><feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/><feOffset dy="28"/><feGaussianBlur stdDeviation="25"/><feColorMatrix values="0 0 0 0 0.19 0 0 0 0 0.16 0 0 0 0 0.42 0 0 0 .2 0"/><feBlend in2="effect1_backgroundBlur" result="effect2_dropShadow"/><feBlend in="SourceGraphic" in2="effect2_dropShadow" result="shape"/></filter>
+    <filter id="smallShadow" x="560" y="88" width="277" height="164" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feGaussianBlur in="BackgroundImageFix" stdDeviation="8"/><feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/><feOffset dy="12"/><feGaussianBlur stdDeviation="12"/><feColorMatrix values="0 0 0 0 0.19 0 0 0 0 0.16 0 0 0 0 0.42 0 0 0 .14 0"/><feBlend in2="effect1_backgroundBlur" result="effect2_dropShadow"/><feBlend in="SourceGraphic" in2="effect2_dropShadow" result="shape"/></filter>
+  </defs>
+  <circle cx="450" cy="354" r="300" fill="url(#glow)"/>
+  <circle cx="450" cy="354" r="259" stroke="#8E83FF" stroke-opacity=".12" stroke-dasharray="2 12"/>
+  <circle cx="450" cy="354" r="216" stroke="#8E83FF" stroke-opacity=".12" stroke-dasharray="2 12"/>
+  <g filter="url(#shadow)" transform="matrix(.98 -.1 .17 .98 -30 42)">
+    <rect x="143" y="153" width="570" height="431" rx="28" fill="url(#panel)" stroke="#fff" stroke-width="3"/>
+    <path d="M143 181a28 28 0 0 1 28-28h514a28 28 0 0 1 28 28v42H143v-42Z" fill="#fff" fill-opacity=".88"/>
+    <path d="M143 223h570" stroke="#E9E8F4"/>
+    <rect x="166" y="174" width="27" height="27" rx="8" fill="url(#purple)"/>
+    <path d="M173 188.2c3.7-6.1 9.2-6.1 12.8 0-3.6 6.1-9.1 6.1-12.8 0Z" fill="white"/>
+    <circle cx="176.5" cy="188.2" r="1.6" fill="#695FEF"/><circle cx="182.5" cy="188.2" r="1.6" fill="#695FEF"/>
+    <text x="202" y="192" fill="#22213A" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700">Leadabox</text>
+    <text x="623" y="190" fill="#8D8BA2" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600" letter-spacing="1.8">WORKSPACE</text>
+    <rect x="165" y="245" width="525" height="84" rx="18" fill="#F7F6FE"/>
+    <text x="187" y="273" fill="#9896AB" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="1.6">CUSTOMERS + TEAM</text>
+    <text x="187" y="302" fill="#25233F" font-family="Inter,Arial,sans-serif" font-size="21" font-weight="700">Everything moving together.</text>
+    <circle cx="651" cy="287" r="17" fill="#EEEAFE"/><path d="m651 276 2.7 7.3 7.3 2.7-7.3 2.7-2.7 7.3-2.7-7.3-7.3-2.7 7.3-2.7 2.7-7.3Z" fill="#7567F5"/>
+    <rect x="165" y="350" width="157" height="160" rx="18" fill="url(#purple)"/>
+    <text x="184" y="378" fill="#E7E3FF" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">LEADS</text>
+    <text x="184" y="416" fill="white" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">Keep the</text><text x="184" y="442" fill="white" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">conversation</text>
+    <path d="M185 476h116" stroke="white" stroke-opacity=".24" stroke-width="7" stroke-linecap="round"/><path d="M185 476h74" stroke="white" stroke-width="7" stroke-linecap="round"/>
+    <rect x="338" y="350" width="157" height="160" rx="18" fill="#fff" stroke="#EBEAF4"/>
+    <text x="357" y="378" fill="#9A98AD" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">PROJECTS</text>
+    <text x="357" y="416" fill="#28263F" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">Make good</text><text x="357" y="442" fill="#28263F" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">work happen</text>
+    <path d="M358 476h116" stroke="#F0EFF7" stroke-width="7" stroke-linecap="round"/><path d="M358 476h93" stroke="#7A6CF7" stroke-width="7" stroke-linecap="round"/>
+    <rect x="511" y="350" width="179" height="160" rx="18" fill="url(#aqua)"/>
+    <text x="530" y="378" fill="#626E91" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="600">QUOTES + INVOICES</text>
+    <text x="530" y="416" fill="#28263F" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700">Clear steps</text><text x="530" y="442" fill="#28263F" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700">to paid</text>
+    <rect x="530" y="462" width="104" height="25" rx="12.5" fill="white" fill-opacity=".75"/><text x="543" y="478" fill="#5C5792" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing="1">ALL IN ONE FLOW</text>
+    <path d="M165 536h525" stroke="#EAE9F4"/>
+    <circle cx="180" cy="557" r="5" fill="#786AF5"/><text x="194" y="561" fill="#76748B" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="500">One workspace for Leadabox customers and team</text>
+    <circle cx="664" cy="557" r="3" fill="#50C9AA"/>
+  </g>
+  <g filter="url(#smallShadow)" transform="rotate(5 699 165)">
+    <rect x="581" y="119" width="237" height="104" rx="20" fill="#fff" fill-opacity=".96" stroke="#fff" stroke-width="2"/>
+    <circle cx="612" cy="171" r="20" fill="#EBFAF5"/><path d="m603 171 6 6 12-13" stroke="#34B58D" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <text x="644" y="159" fill="#9795A9" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="600">TEAM + CUSTOMER</text>
+    <text x="644" y="180" fill="#28263F" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700">Connected by design</text>
+    <text x="644" y="198" fill="#7C7A91" font-family="Inter,Arial,sans-serif" font-size="10">Quote · deliver · invoice</text>
+  </g>
+  <g transform="rotate(-8 163 522)">
+    <rect x="101" y="500" width="153" height="67" rx="18" fill="#fff" fill-opacity=".96" stroke="#fff" stroke-width="2"/>
+    <circle cx="130" cy="533" r="15" fill="#E9E5FF"/><text x="124" y="537" fill="#665BE6" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">L</text>
+    <circle cx="151" cy="533" r="15" fill="#E0F5F6"/><text x="145" y="537" fill="#258E9B" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">C</text>
+    <circle cx="172" cy="533" r="15" fill="#EAF5EF"/><text x="167" y="537" fill="#338866" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700">T</text>
+    <text x="195" y="530" fill="#928FA7" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700" letter-spacing="1">ONE TEAM</text>
+    <text x="195" y="545" fill="#28263F" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700">In sync</text>
+  </g>
+</svg>

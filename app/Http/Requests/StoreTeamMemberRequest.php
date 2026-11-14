@@ -24,6 +24,8 @@ class StoreTeamMemberRequest extends FormRequest
             'job_title' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
             'role' => ['required', Rule::in(Role::values())],
+            'is_active' => ['sometimes', 'boolean'],
+            'send_invite' => ['sometimes', 'boolean'],
         ];
     }
 }

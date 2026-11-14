@@ -7,7 +7,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'DM Sans', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     --color-navy-50: #eef3ff;
@@ -81,4 +81,196 @@
     [x-cloak] {
         display: none !important;
     }
+}
+
+.marketing-site {
+    --marketing-bg: #f8f8fc;
+    --marketing-text: #111328;
+    --marketing-muted: #62657b;
+    --marketing-border: rgba(70, 72, 111, .14);
+    --marketing-surface: rgba(255, 255, 255, .76);
+    --marketing-glass: rgba(255, 255, 255, .68);
+    position: relative;
+    background: var(--marketing-bg);
+    color: var(--marketing-text);
+}
+
+html.dark .marketing-site {
+    --marketing-bg: #080b16;
+    --marketing-text: #f7f7ff;
+    --marketing-muted: #a5a6ba;
+    --marketing-border: rgba(255, 255, 255, .11);
+    --marketing-surface: rgba(19, 23, 42, .72);
+    --marketing-glass: rgba(16, 20, 38, .64);
+}
+
+.marketing-atmosphere {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.marketing-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .56;
+    background-image: linear-gradient(rgba(111, 102, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(111, 102, 255, .05) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+}
+
+html.dark .marketing-grid {
+    opacity: .34;
+    background-image: linear-gradient(rgba(148, 140, 255, .1) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 140, 255, .1) 1px, transparent 1px);
+}
+
+.water-particles {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: .68;
+}
+
+.marketing-orb {
+    position: absolute;
+    width: min(54vw, 42rem);
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    filter: blur(110px);
+    opacity: .35;
+    animation: marketing-drift 14s ease-in-out infinite alternate;
+}
+
+.marketing-orb-one {
+    left: -22rem;
+    top: 12rem;
+    background: #9d8aff;
+}
+
+.marketing-orb-two {
+    right: -23rem;
+    top: 25rem;
+    background: #6dd4e2;
+    animation-delay: -7s;
+}
+
+html.dark .marketing-orb {
+    opacity: .19;
+}
+
+.site-header > div {
+    border-color: var(--marketing-border);
+    background: var(--marketing-glass);
+    color: var(--marketing-text);
+}
+
+.site-nav-link {
+    border-radius: .75rem;
+    padding: .65rem .85rem;
+    color: var(--marketing-muted);
+    font-size: .8rem;
+    font-weight: 600;
+    transition: color .2s, background .2s;
+}
+
+.site-nav-link:hover,
+.site-nav-active {
+    background: rgba(123, 102, 255, .1);
+    color: var(--marketing-text);
+}
+
+.marketing-heading { color: var(--marketing-text); }
+.marketing-muted { color: var(--marketing-muted); }
+.marketing-border { border-color: var(--marketing-border); }
+.marketing-surface { border: 1px solid var(--marketing-border); background: var(--marketing-surface); }
+.marketing-glass { border: 1px solid var(--marketing-border); background: var(--marketing-glass); backdrop-filter: blur(22px); }
+
+.marketing-gradient-text {
+    background: linear-gradient(105deg, #7665f5 4%, #a36bf7 48%, #31acc3 98%);
+    background-clip: text;
+    color: transparent;
+}
+
+html.dark .marketing-gradient-text {
+    background-image: linear-gradient(105deg, #a89aff 4%, #cb9cff 48%, #72e5e6 98%);
+}
+
+.marketing-card {
+    transform: translateZ(0);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s, box-shadow .3s, background .3s;
+}
+
+.marketing-card:hover {
+    transform: translateY(-6px) rotateX(1.5deg);
+    border-color: rgba(132, 112, 255, .38);
+    box-shadow: 0 24px 75px -35px rgba(74, 55, 172, .28);
+}
+
+.hero-art {
+    transform-style: preserve-3d;
+    animation: hero-art-float 7s ease-in-out infinite;
+}
+
+.hero-enter {
+    animation: hero-enter .75s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero-enter-delay {
+    animation: hero-enter .9s .12s cubic-bezier(.2,.8,.2,1) both, hero-art-float 7s 1s ease-in-out infinite;
+}
+
+.water-lens {
+    position: fixed;
+    z-index: 25;
+    top: 0;
+    left: 0;
+    width: clamp(230px, 27vw, 390px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 255, 255, .54);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 32% 27%, rgba(255, 255, 255, .7), transparent 12%), radial-gradient(ellipse at 39% 33%, rgba(255, 255, 255, .18), transparent 43%), radial-gradient(circle at 50% 55%, rgba(151, 132, 255, .13), rgba(126, 196, 242, .07) 58%, rgba(255, 255, 255, .32) 68%, rgba(255, 255, 255, .03) 74%, transparent 77%);
+    box-shadow: inset 17px 18px 28px rgba(255, 255, 255, .43), inset -22px -25px 34px rgba(94, 83, 205, .12), 0 18px 65px rgba(64, 52, 151, .12);
+    backdrop-filter: blur(2px) saturate(155%);
+    -webkit-backdrop-filter: blur(2px) saturate(155%);
+    mix-blend-mode: screen;
+    will-change: transform, opacity;
+    transition: opacity .24s ease;
+}
+
+.water-lens.is-visible { opacity: .78; }
+
+html.dark .water-lens {
+    border-color: rgba(220, 219, 255, .28);
+    background: radial-gradient(circle at 32% 27%, rgba(255, 255, 255, .48), transparent 12%), radial-gradient(ellipse at 39% 33%, rgba(180, 170, 255, .18), transparent 43%), radial-gradient(circle at 50% 55%, rgba(137, 112, 255, .16), rgba(68, 150, 201, .08) 58%, rgba(224, 222, 255, .2) 68%, rgba(255, 255, 255, .025) 74%, transparent 77%);
+    box-shadow: inset 17px 18px 28px rgba(255, 255, 255, .24), inset -22px -25px 34px rgba(99, 86, 240, .22), 0 18px 65px rgba(81, 66, 203, .18);
+}
+
+@keyframes marketing-drift {
+    from { transform: translate3d(-9px, 7px, 0) scale(.95); }
+    to { transform: translate3d(15px, -13px, 0) scale(1.08); }
+}
+
+@keyframes hero-art-float {
+    0%, 100% { transform: translateY(0) rotateX(1deg) rotateY(-3deg); }
+    50% { transform: translateY(-10px) rotateX(-1deg) rotateY(2deg); }
+}
+
+@keyframes hero-enter {
+    from { opacity: 0; transform: translate3d(0, 18px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .water-lens { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marketing-orb, .hero-art { animation: none; }
+    .marketing-card:hover { transform: none; }
 }

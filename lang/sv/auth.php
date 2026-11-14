@@ -17,4 +17,12 @@ return [
     'log_in' => 'Logga in',
     'create_account' => 'Skapa konto',
     'full_name' => 'Fullständigt namn',
+    'forgot_password' => 'Glömt lösenordet?',
+    'forgot_password_title' => 'Återställ lösenord',
+    'forgot_password_subtitle' => 'Ange e-postadressen för ditt konto så skickar vi en säker återställningslänk om kontot finns.',
+    'send_reset_link' => 'Skicka återställningslänk',
+    'reset_password_title' => 'Välj ett nytt lösenord',
+    'reset_password' => 'Spara nytt lösenord',
+    'password_link_sent' => 'Om ett konto matchar e-postadressen har en länk för att skapa ett nytt lösenord skickats.',
+    'password_reset' => 'Lösenordet har uppdaterats. Du kan logga in nu.',
 ];

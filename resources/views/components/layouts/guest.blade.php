@@ -11,6 +11,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>{{ $title ? $title.' · '.$brand : $brand }}</title>
 
     <script>
@@ -23,10 +26,15 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="flex h-full items-center justify-center bg-slate-50 px-4 py-12 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
-    <div class="absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-navy-100/60 to-transparent dark:from-navy-500/10"></div>
+<body data-water-lens class="relative isolate flex h-full items-center justify-center bg-slate-50 px-4 py-12 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(99,91,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(99,91,255,.035)_1px,transparent_1px)] bg-size-[42px_42px] dark:opacity-40"></div>
+        <canvas class="water-particles"></canvas>
+        <div class="absolute -left-32 top-12 size-[28rem] rounded-full bg-violet-300/25 blur-[100px] dark:bg-indigo-600/15"></div>
+        <div class="absolute -right-28 bottom-0 size-[28rem] rounded-full bg-sky-200/35 blur-[110px] dark:bg-violet-700/15"></div>
+    </div>
 
-    <div class="w-full max-w-md animate-slide-up">
+    <div class="relative z-10 w-full max-w-md animate-slide-up">
         <a href="{{ route('home') }}" class="mb-8 flex items-center justify-center gap-2.5">
             <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-10" width="40" height="40">
             <span class="text-xl font-semibold tracking-tight">{{ $brand }}</span>
