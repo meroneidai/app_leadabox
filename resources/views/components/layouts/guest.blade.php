@@ -38,7 +38,7 @@
         <header class="flex items-center justify-between">
             <a href="https://leadabox.com" class="inline-flex items-center gap-3" aria-label="{{ $brand }} home">
                 <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-10" width="40" height="40">
-                <span class="text-base font-semibold tracking-tight">{{ $brand }}</span>
+                <span class="text-base font-bold tracking-tight">{{ $brand }}</span>
             </a>
             <div class="flex items-center gap-2">
                 <button

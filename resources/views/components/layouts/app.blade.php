@@ -63,7 +63,7 @@
             <div class="flex h-16 shrink-0 items-center gap-2 px-4">
                 <a href="https://leadabox.com" class="flex items-center gap-2.5 overflow-hidden" aria-label="{{ $brand }} website">
                     <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-9 shrink-0" width="36" height="36">
-                    <span x-show="!collapsed" class="truncate text-base font-semibold tracking-tight">{{ $brand }}</span>
+                    <span x-show="!collapsed" class="truncate text-base font-bold tracking-tight">{{ $brand }}</span>
                 </a>
             </div>
 

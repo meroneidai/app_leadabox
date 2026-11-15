@@ -13,7 +13,7 @@
     <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
         <header class="mb-8 flex items-center gap-2.5">
             <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-9" width="36" height="36">
-            <span class="text-lg font-semibold tracking-tight">{{ $brand }}</span>
+            <span class="text-lg font-bold tracking-tight">{{ $brand }}</span>
         </header>
 
         <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
