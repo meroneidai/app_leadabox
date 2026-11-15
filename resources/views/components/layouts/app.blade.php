@@ -28,7 +28,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body data-water-lens class="relative isolate h-full bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+<body class="relative isolate h-full bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
     <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(115,105,255,.06),transparent_38%)] dark:bg-[radial-gradient(ellipse_at_top_left,rgba(115,105,255,.09),transparent_38%)]"></div>
         <div class="absolute -right-36 top-24 size-[26rem] rounded-full bg-sky-200/15 blur-[110px] dark:bg-indigo-700/10"></div>

@@ -93,67 +93,6 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-const initializeWaterLens = () => {
-    if (!document.body.hasAttribute('data-water-lens') || window.matchMedia('(pointer: coarse), (prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    const lens = document.createElement('div');
-    lens.className = 'water-lens';
-    lens.setAttribute('aria-hidden', 'true');
-    document.body.append(lens);
-
-    let frame = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let hasPointer = false;
-
-    const followPointer = () => {
-        currentX += (targetX - currentX) * 0.19;
-        currentY += (targetY - currentY) * 0.19;
-        lens.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
-        frame = 0;
-
-        if (Math.abs(targetX - currentX) > 0.35 || Math.abs(targetY - currentY) > 0.35) {
-            frame = window.requestAnimationFrame(followPointer);
-        }
-    };
-
-    window.addEventListener('pointermove', (event) => {
-        if (event.pointerType !== 'mouse') {
-            return;
-        }
-
-        targetX = event.clientX;
-        targetY = event.clientY;
-        if (!hasPointer) {
-            currentX = targetX;
-            currentY = targetY;
-            hasPointer = true;
-        }
-        lens.classList.add('is-visible');
-
-        if (frame) {
-            return;
-        }
-
-        frame = window.requestAnimationFrame(followPointer);
-    }, { passive: true });
-
-    document.documentElement.addEventListener('pointerleave', () => lens.classList.remove('is-visible'));
-    document.documentElement.addEventListener('pointerenter', () => {
-        if (hasPointer) lens.classList.add('is-visible');
-    });
-    window.addEventListener('blur', () => lens.classList.remove('is-visible'));
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            lens.classList.remove('is-visible');
-        }
-    });
-};
-
 const initializeWaterParticles = () => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -167,8 +106,6 @@ const initializeWaterParticles = () => {
         let width = 0;
         let height = 0;
         let pixelRatio = 1;
-        let pointerX = 0;
-        let pointerY = 0;
         let animationFrame = 0;
         let particles = [];
 
@@ -202,8 +139,8 @@ const initializeWaterParticles = () => {
                 const scale = 0.3 + particle.depth * 1.05;
 
                 return {
-                    x: width / 2 + (particle.x - 0.5) * width * scale + pointerX * particle.depth * 16,
-                    y: height / 2 + (particle.y - 0.5) * height * scale + pointerY * particle.depth * 16,
+                    x: width / 2 + (particle.x - 0.5) * width * scale,
+                    y: height / 2 + (particle.y - 0.5) * height * scale,
                     radius: 0.7 + particle.depth * 1.45,
                     depth: particle.depth,
                 };
@@ -236,10 +173,6 @@ const initializeWaterParticles = () => {
         };
 
         window.addEventListener('resize', resize, { passive: true });
-        window.addEventListener('pointermove', (event) => {
-            pointerX = (event.clientX / width - 0.5) * 2;
-            pointerY = (event.clientY / height - 0.5) * 2;
-        }, { passive: true });
         document.addEventListener('visibilitychange', () => {
             if (document.hidden && animationFrame) {
                 window.cancelAnimationFrame(animationFrame);
@@ -254,6 +187,4 @@ const initializeWaterParticles = () => {
     });
 };
 
-
-initializeWaterLens();
 initializeWaterParticles();

@@ -26,7 +26,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body data-water-lens class="relative isolate min-h-full overflow-x-hidden bg-[#f5f3ee] font-sans text-slate-900 antialiased dark:bg-[#070a12] dark:text-slate-100">
+<body class="relative isolate min-h-full overflow-x-hidden bg-[#f5f3ee] font-sans text-slate-900 antialiased dark:bg-[#070a12] dark:text-slate-100">
     <div class="auth-atmosphere pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div class="auth-grid absolute inset-0"></div>
         <canvas class="water-particles"></canvas>

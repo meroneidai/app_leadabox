@@ -19,9 +19,10 @@ class CustomerController extends Controller
         $this->authorize('viewAny', Customer::class);
 
         $status = $request->query('status');
+        $companyId = $request->user()->company_id ?? Company::current()?->id;
 
         $customers = Customer::query()
-            ->forCompany($request->user()->company_id)
+            ->forCompany($companyId)
             ->search($request->query('q'))
             ->when(
                 in_array($status, CustomerStatus::values(), true),
@@ -51,9 +52,12 @@ class CustomerController extends Controller
     {
         $customer = DB::transaction(function () use ($request) {
             $company = Company::current();
+            $companyId = $request->user()->company_id ?? $company?->id;
+
+            abort_unless($companyId !== null, 422, 'The company workspace has not been configured.');
 
             $customer = new Customer($request->validated());
-            $customer->company_id = $request->user()->company_id ?? $company?->id;
+            $customer->company_id = $companyId;
             $customer->save();
 
             if ($request->filled('contact_name')) {

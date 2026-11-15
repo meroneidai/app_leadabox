@@ -54,6 +54,12 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'admin' => [
+        'email' => env('LEADABOX_ADMIN_EMAIL', 'meroneidai@gmail.com'),
+        'name' => env('LEADABOX_ADMIN_NAME', 'Leadabox Admin'),
+        'password' => env('LEADABOX_ADMIN_PASSWORD'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
