@@ -51,7 +51,7 @@ class ServiceSeeder extends Seeder
         ];
 
         foreach ($services as $i => [$category, $code, $name, $unit, $price, $cost, $type, $interval, $tracksExpiry]) {
-            Service::updateOrCreate(
+            Service::firstOrCreate(
                 ['company_id' => $company->id, 'code' => $code],
                 [
                     'service_category_id' => $categories[$category]->id,
