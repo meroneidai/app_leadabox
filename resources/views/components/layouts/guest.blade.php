@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg?v=20261115') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div class="relative z-10 mx-auto flex min-h-svh w-full max-w-6xl flex-col px-5 py-7 sm:px-8 sm:py-9">
         <header class="flex items-center justify-between">
             <a href="https://leadabox.com" class="inline-flex items-center gap-3" aria-label="{{ $brand }} home">
-                <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-10" width="40" height="40">
+                <img src="{{ asset('images/leadabox-mark.svg?v=20261115') }}" alt="" class="size-10" width="40" height="40">
                 <span class="text-base font-bold tracking-tight">{{ $brand }}</span>
             </a>
             <div class="flex items-center gap-2">

@@ -24,7 +24,7 @@
                                 <table role="presentation" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td style="padding-right:12px;">
-                                            <img src="{{ asset('images/leadabox-mark.svg') }}"
+                                            <img src="{{ asset('images/leadabox-mark.svg?v=20261115') }}"
                                                  width="36" height="36" alt="{{ $brand }}"
                                                  style="display:block;border:0;width:36px;height:36px;">
                                         </td>

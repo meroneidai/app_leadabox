@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg?v=20261115') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
         >
             <div class="flex h-16 shrink-0 items-center gap-2 px-4">
                 <a href="https://leadabox.com" class="flex items-center gap-2.5 overflow-hidden" aria-label="{{ $brand }} website">
-                    <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-9 shrink-0" width="36" height="36">
+                    <img src="{{ asset('images/leadabox-mark.svg?v=20261115') }}" alt="" class="size-9 shrink-0" width="36" height="36">
                     <span x-show="!collapsed" class="truncate text-base font-bold tracking-tight">{{ $brand }}</span>
                 </a>
             </div>

@@ -9,14 +9,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/leadabox-mark.svg?v=20261115') }}">
     <title>{{ $project->name }} · {{ $brand }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-full bg-slate-50 font-sans text-slate-900 antialiased">
     <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
         <header class="mb-8 flex items-center gap-2.5">
-            <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-9" width="36" height="36">
+            <img src="{{ asset('images/leadabox-mark.svg?v=20261115') }}" alt="" class="size-9" width="36" height="36">
             <span class="text-lg font-bold tracking-tight">{{ $brand }}</span>
         </header>
 
