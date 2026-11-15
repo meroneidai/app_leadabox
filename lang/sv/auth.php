@@ -8,6 +8,10 @@ return [
 
     'login_title' => 'Logga in på :app',
     'login_subtitle' => 'Ditt företag. En enkel plattform.',
+    'workspace_label' => 'Arbetsyta för kunder och team',
+    'workspace_heading' => 'Arbetet flyter bättre när vi gör det tillsammans.',
+    'workspace_description' => 'En privat arbetsyta där Leadabox kunder och team håller kundrelationer, offerter, projekt och fakturor samlade.',
+    'workspace_note' => 'En säker arbetsyta för Leadabox',
     'register_title' => 'Skapa det första kontot',
     'register_subtitle' => 'Detta konto blir administratör.',
     'email' => 'E-postadress',

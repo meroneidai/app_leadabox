@@ -31,6 +31,6 @@
             {{ __('auth.remember_me') }}
         </label>
 
-        <x-button type="submit" class="w-full" size="lg">{{ __('auth.log_in') }}</x-button>
+        <x-button type="submit" class="auth-submit w-full" size="lg">{{ __('auth.log_in') }}</x-button>
     </form>
 </x-layouts.guest>

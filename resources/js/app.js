@@ -104,28 +104,48 @@ const initializeWaterLens = () => {
     document.body.append(lens);
 
     let frame = 0;
-    let pointerX = 0;
-    let pointerY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let hasPointer = false;
+
+    const followPointer = () => {
+        currentX += (targetX - currentX) * 0.19;
+        currentY += (targetY - currentY) * 0.19;
+        lens.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+        frame = 0;
+
+        if (Math.abs(targetX - currentX) > 0.35 || Math.abs(targetY - currentY) > 0.35) {
+            frame = window.requestAnimationFrame(followPointer);
+        }
+    };
 
     window.addEventListener('pointermove', (event) => {
         if (event.pointerType !== 'mouse') {
             return;
         }
 
-        pointerX = event.clientX;
-        pointerY = event.clientY;
+        targetX = event.clientX;
+        targetY = event.clientY;
+        if (!hasPointer) {
+            currentX = targetX;
+            currentY = targetY;
+            hasPointer = true;
+        }
         lens.classList.add('is-visible');
 
         if (frame) {
             return;
         }
 
-        frame = window.requestAnimationFrame(() => {
-            lens.style.transform = `translate3d(${pointerX}px, ${pointerY}px, 0) translate(-50%, -50%)`;
-            frame = 0;
-        });
+        frame = window.requestAnimationFrame(followPointer);
     }, { passive: true });
 
+    document.documentElement.addEventListener('pointerleave', () => lens.classList.remove('is-visible'));
+    document.documentElement.addEventListener('pointerenter', () => {
+        if (hasPointer) lens.classList.add('is-visible');
+    });
     window.addEventListener('blur', () => lens.classList.remove('is-visible'));
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
@@ -233,6 +253,7 @@ const initializeWaterParticles = () => {
         render();
     });
 };
+
 
 initializeWaterLens();
 initializeWaterParticles();

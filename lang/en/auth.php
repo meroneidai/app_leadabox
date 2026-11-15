@@ -8,6 +8,10 @@ return [
 
     'login_title' => 'Sign in to :app',
     'login_subtitle' => 'Your business. One simple platform.',
+    'workspace_label' => 'Customer and team workspace',
+    'workspace_heading' => 'Work moves better when it moves together.',
+    'workspace_description' => 'A private space for Leadabox customers and team to keep relationships, quotes, projects and invoices connected.',
+    'workspace_note' => 'A secure workspace for Leadabox',
     'register_title' => 'Create the first account',
     'register_subtitle' => 'This account becomes the administrator.',
     'email' => 'Email address',

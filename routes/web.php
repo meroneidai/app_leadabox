@@ -9,7 +9,6 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectMemberController;
@@ -23,13 +22,11 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [MarketingController::class, 'home'])->name('home');
-Route::get('about', [MarketingController::class, 'about'])->name('marketing.about');
-Route::get('solutions', [MarketingController::class, 'services'])->name('marketing.services');
-Route::get('services/{service}', [MarketingController::class, 'service'])
-    ->where('service', 'web-development|web-design|software-development|mobile-app-development|ai-agents|ai-integration|seo-digital-visibility')
-    ->name('marketing.service');
-Route::get('contact', [MarketingController::class, 'contact'])->name('marketing.contact');
+Route::get('/', function () {
+    return auth()->check()
+        ? redirect()->route('dashboard')
+        : redirect()->route('login');
+})->name('home');
 
 Route::put('locale/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 

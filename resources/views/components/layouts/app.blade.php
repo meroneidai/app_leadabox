@@ -61,7 +61,7 @@
                    dark:border-slate-800 dark:bg-slate-900 lg:static lg:z-auto lg:translate-x-0"
         >
             <div class="flex h-16 shrink-0 items-center gap-2 px-4">
-                <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5 overflow-hidden">
+                <a href="https://leadabox.com" class="flex items-center gap-2.5 overflow-hidden" aria-label="{{ $brand }} website">
                     <img src="{{ asset('images/leadabox-mark.svg') }}" alt="" class="size-9 shrink-0" width="36" height="36">
                     <span x-show="!collapsed" class="truncate text-base font-semibold tracking-tight">{{ $brand }}</span>
                 </a>

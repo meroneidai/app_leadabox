@@ -20,18 +20,20 @@
                        style="max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
                     <tr>
                         <td style="background:#0b0e1f;padding:24px 32px;">
-                            <table role="presentation" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td style="padding-right:12px;">
-                                        <img src="{{ asset('images/leadabox-mark.svg') }}"
-                                             width="36" height="36" alt="{{ $brand }}"
-                                             style="display:block;border:0;width:36px;height:36px;">
-                                    </td>
-                                    <td>
-                                        <span style="color:#ffffff;font-size:18px;font-weight:700;letter-spacing:-0.3px;">{{ $brand }}</span>
-                                    </td>
-                                </tr>
-                            </table>
+                            <a href="https://leadabox.com" aria-label="{{ $brand }} website" style="display:inline-block;text-decoration:none;">
+                                <table role="presentation" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td style="padding-right:12px;">
+                                            <img src="{{ asset('images/leadabox-mark.svg') }}"
+                                                 width="36" height="36" alt="{{ $brand }}"
+                                                 style="display:block;border:0;width:36px;height:36px;">
+                                        </td>
+                                        <td>
+                                            <span style="color:#ffffff;font-size:18px;font-weight:700;letter-spacing:-0.3px;">{{ $brand }}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
                         </td>
                     </tr>
 
@@ -50,7 +52,7 @@
                             <p style="margin:0;font-size:12px;line-height:1.6;color:#94a3b8;">
                                 @if ($company?->email){{ $company->email }}@endif
                                 @if ($company?->phone) · {{ $company->phone }} @endif
-                                @if ($company?->website) · {{ $company->website }} @endif
+                                · <a href="https://leadabox.com" style="color:#64748b;text-decoration:none;">leadabox.com</a>
                             </p>
                         </td>
                     </tr>
